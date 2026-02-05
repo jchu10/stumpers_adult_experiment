@@ -1,0 +1,67 @@
+<!-- // counterbalancing: https://softdev.ppls.ed.ac.uk/online_experiments/07_ppt.html -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Riddles study</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta charset="UTF-8">
+
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/survey.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="js/jspsych/jspsych.css">
+
+  <script src="https://unpkg.com/jspsych@8.2.2"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-fullscreen@2.1.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-instructions@2.1.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@2.2.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-browser-check@2.1.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-survey@4.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-html-button-response@2.1.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-survey-text@2.1.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.1.0"></script>
+  <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+
+  <script src="js/stimuli.js"></script>
+  <script src="js/game_settings.js"></script>
+  <script src="js/experiment.js"></script>
+
+</head>
+
+<body>
+  <input class="contact_helper" type="text" name="email_address" id="email_address" autocomplete="off">
+  <div id="captcha-container">
+    <h3>Security Verification</h3>
+    <p>Please confirm you are human to begin.</p>
+    <div id="g-recaptcha-target"></div>
+    <br>
+    <button id="captcha-proceed" style="display:none; padding: 10px 20px;">Begin Study</button>
+  </div>
+</body>
+<script type="text/javascript">
+  window.onbeforeunload = function () {
+    return "Please do not refresh the page or go back, changes you made may not be saved!";
+  }
+  window.onload = function () {
+    setupGame();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const emailField = document.getElementById('email_address');
+    if (emailField) {
+      const saveFirstValue = () => {
+        if (emailField.value.trim() !== '') {
+          gs.session_info.pot1 = emailField.value.trim();
+          emailField.removeEventListener('input', saveFirstValue); // Remove listener after first save
+        }
+      };
+      emailField.addEventListener('input', saveFirstValue);
+    }
+  });
+</script>
+
+</html>
