@@ -28,8 +28,6 @@ function setupGame() {
     // #endregion
 
     // #region Captcha
-    const captcha_resolved = false;
-
     const captcha_trial = {
         type: jsPsychHtmlKeyboardResponse,
         stimulus: '', // Blank screen while the overlay is visible
@@ -37,20 +35,38 @@ function setupGame() {
         on_load: function () {
             const container = document.getElementById('captcha-container');
             const btn = document.getElementById('captcha-proceed');
+            const widgetTarget = document.getElementById('turnstile-widget');
             container.style.display = 'block';
 
-            window.correctCaptcha = function (response) {
-                window.captchaToken = response;
-                btn.style.display = 'inline-block';
-            };
+            let attempts = 0;
+            const maxAttempts = 50; // 5 seconds total
 
-            // Only render if it hasn't been rendered yet
-            if (document.getElementById('g-recaptcha-target').innerHTML === "") {
-                grecaptcha.render('g-recaptcha-target', {
-                    'sitekey': SITEKEY,
-                    'callback': 'correctCaptcha'
-                });
+            function tryRender() {
+                if (typeof turnstile !== 'undefined') {
+                    turnstile.render('#turnstile-widget', {
+                        sitekey: '0x4AAAAAAB7QSd0CO5eotyUL',
+                        callback: function (token) {
+                            window.captchaToken = token;
+                            btn.style.display = 'inline-block';
+                        },
+                        'error-callback': function () {
+                            widgetTarget.innerHTML =
+                                '<p style="color: #b22222;">Verification error. Please try reloading the page.</p>';
+                        }
+                    });
+                } else if (attempts < maxAttempts) {
+                    attempts++;
+                    setTimeout(tryRender, 100);
+                } else {
+                    widgetTarget.innerHTML =
+                        '<p style="color: #b22222; font-weight: bold;">' +
+                        'Security verification failed to load.<br>' +
+                        'Please disable any ad blockers for this page and reload.' +
+                        '</p>';
+                }
             }
+
+            tryRender();
 
             btn.onclick = () => {
                 container.style.display = 'none';
