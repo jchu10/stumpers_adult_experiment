@@ -1,0 +1,215 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Arial, 'Sans Serif';
+  background-color: #f9f4ea;
+}
+
+#jspsych-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh;
+  width: 100%; */
+}
+
+.content-box {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px 40px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  min-height: 600px;
+  max-height: 85vh;
+  min-width: 800px;
+  max-width: 85vw;
+  overflow-y: auto;
+  align-items: center;
+}
+
+.content-box:has(.riddle-prompt),
+.content-box:has(.riddle-solution),
+.content-box:has(#confidence-slider) {
+  /* width: 60vw;
+  height: 60vh; */
+  max-width: 1000px;
+  /* min-width: unset; */
+  /* min-height: unset; */
+  /* max-height: unset; */
+  /* overflow-y: hidden; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.jspsych-survey-multi-choice-option {
+  line-height: 1.75 !important;
+}
+
+#jspsych-survey-text-form {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-box p {
+  text-align: left;
+  line-height: 1.6;
+  font-size: 20px;
+  color: #333;
+}
+
+.content-box li {
+  text-align: left;
+  line-height: 1.2;
+  font-size: 20px;
+  color: #333;
+}
+
+.riddle-prompt {
+  font-size: 20px !important;
+  font-weight: 500;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-align: center !important;
+}
+
+.riddle-solution {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+  text-align: center;
+}
+
+.riddle-input {
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 40px;
+}
+
+.jspsych-btn {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 24px;
+  margin: 15px 10px 0 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border-color: #4CAF50;
+}
+
+
+.slider-container {
+  width: 80%;
+  max-width: 600px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 17px;
+  color: #555;
+  margin-top: 5px;
+}
+
+.separator {
+  width: 80%;
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 30px auto;
+}
+
+
+.similarity-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.similarity-buttons .jspsych-btn {
+  margin: 15px;
+  width: auto;
+}
+
+.validation-msg {
+  color: #b22222;
+  font-weight: bold;
+  margin-top: 15px;
+  height: 20px;
+}
+
+li+li {
+  margin-top: 12px;
+}
+
+.contact_helper {
+  display: none;
+}
+
+#captcha-container {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  text-align: center;
+}
