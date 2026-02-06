@@ -47,7 +47,7 @@ function setupGame() {
             // Only render if it hasn't been rendered yet
             if (document.getElementById('g-recaptcha-target').innerHTML === "") {
                 grecaptcha.render('g-recaptcha-target', {
-                    'sitekey': '6Le_Yk0sAAAAAEK5jvozPPEva_4_9OfSsvEEmq4u', // FIXME: replace with actual site key
+                    'sitekey': SITEKEY,
                     'callback': 'correctCaptcha'
                 });
             }
@@ -58,7 +58,7 @@ function setupGame() {
             };
         }
     };
-    // timeline.push(captcha_trial);
+    timeline.push(captcha_trial);
 
     // #endregion
 

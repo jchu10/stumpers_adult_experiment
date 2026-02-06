@@ -1,5 +1,3 @@
-<!-- // counterbalancing: https://softdev.ppls.ed.ac.uk/online_experiments/07_ppt.html -->
-
 <!DOCTYPE html>
 <html>
 
@@ -23,9 +21,7 @@
   <script src="https://unpkg.com/@jspsych/plugin-survey-text@2.1.0"></script>
   <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.1.0"></script>
   <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe"></script>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
   <script src="js/stimuli.js"></script>
   <script src="js/game_settings.js"></script>
@@ -38,7 +34,7 @@
   <div id="captcha-container">
     <h3>Security Verification</h3>
     <p>Please confirm you are human to begin.</p>
-    <div id="g-recaptcha-target"></div>
+    <div class="cf-turnstile" data-sitekey="YOUR_SITE_KEY" data-callback="turnstileCallback"></div>
     <br>
     <button id="captcha-proceed" style="display:none; padding: 10px 20px;">Begin Study</button>
   </div>
