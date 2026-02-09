@@ -865,7 +865,7 @@ function setupGame() {
         type: jsPsychPipe,
         action: "save",
         experiment_id: gs.study_metadata.experimentIdOSF,
-        filename: `${jsPsych.data.dataProperties.subjectID}.json`,
+        filename: `${jsPsych.data.dataProperties.subjectID}_data.json`,
         data_string: () => jsPsych.data.get().json()
     };
     main_experiment_list.push(save_all_data);
