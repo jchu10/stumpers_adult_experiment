@@ -33,7 +33,6 @@ function setupGame() {
     const captcha_trial = {
         type: jsPsychHtmlKeyboardResponse,
         stimulus: '', // Blank screen while the overlay is visible
-        choices: "NO_KEYS",
         on_load: function () {
             document.getElementById("jspsych-progressbar-container").style.visibility = "hidden";// hide progress bar
             const container = document.getElementById('captcha-container');
