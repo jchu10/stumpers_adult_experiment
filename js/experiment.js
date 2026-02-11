@@ -182,17 +182,12 @@ function setupGame() {
             `<div class="content-box" style="align-content: center">
                 <h3>Instructions - <em>Please read carefully!</em></h3>
                 <p>Hello, and welcome to our study!</p>
-                <p>In this study, we're really interested in <strong>how people solve riddles.</strong> This study has two parts:</p>
-                <ol>
-                <li><p>In the first part, we're going to show you ${gs.study_metadata.num_riddles} riddles, one at a time.</p>
+                <p>In this study, we're really interested in <strong>how people solve riddles.</strong></p>
                 <ul>
-                    <li><strong>Your task</strong>: Answer each riddle as best you can, and rate how confident you are in your answer.</li>
-                    <li>After you answer a riddle, we will show you a solution to the riddle, and ask you how <strong>similar</strong> that solution is to your answer.</li>
-                    </ul>
-                    </li>
-                    <li>In the second part, you'll answer a few more riddles without any additional ratings.</li>
-
-                </ol>
+                <li>We're going to show you 6 riddles, one at a time.</li>
+                    <li><strong>Your task</strong>: Answer each riddle as best you can.</li>
+                </ul>
+                
                 <h3 style="text-align: left;"><strong>IMPORTANT:</strong></h3>
                     <ul>
                     <li>Some of the riddles might be hard or seem impossible. That's part of the point. If you can't think of an answer, simply write "I don't know".</li>
@@ -220,12 +215,6 @@ function setupGame() {
             required: true
         },
         {
-            prompt: `<b>What will you do after you see the solution to each riddle?</b>`,
-            name: 'after_riddle',
-            options: ["Rate how much you like it.", "Write a new riddle.", "Rate how similar your response is."],
-            required: true
-        },
-        {
             prompt: `<b>What should you do if you don't know the answer to a riddle?</b>`,
             name: 'dont_know',
             options: ["Leave the text box blank.", "Type 'I don't know'.", "Look up the answer on the internet."],
@@ -235,7 +224,6 @@ function setupGame() {
 
     const correct_answers = {
         task: "Read and answer a series of riddles.",
-        after_riddle: "Rate how similar your response is.",
         dont_know: "Type 'I don't know'."
     };
 
