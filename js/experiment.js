@@ -619,7 +619,7 @@ function setupGame() {
         riddleTrials.push(questionTrial, confidenceTrial, similarityTrial);
     });
 
-    main_experiment_list.push([preRiddleMessage, ...riddleTrials])
+    // main_experiment_list.push([preRiddleMessage, ...riddleTrials])
 
 
     // save all current data to datapipe
@@ -630,7 +630,7 @@ function setupGame() {
         filename: `${jsPsych.data.dataProperties.subjectID}_part2.json`,
         data_string: () => jsPsych.data.get().json()
     };
-    main_experiment_list.push(save_till_part2);
+    // main_experiment_list.push(save_till_part2);
     // #endregion
 
     // #region CRT trials
@@ -638,9 +638,7 @@ function setupGame() {
         type: jsPsychHtmlButtonResponse,
         stimulus: `
             <div class="content-box" style="align-content: center">
-            <p>Great job! Now, we have a final set of ${crt.length} riddles.</p>
-            <p>For these riddles, just provide your best answer.</p>
-            <p>You don't need to rate your confidence or similarity to the solution.</p>
+            <p>Great job! Now, we have a set of ${crt.length} riddles.</p>
                 <br>
                 <br>
                 <p>Remember: We are most interested in your thought process, so please provide your genuine response without getting help or looking up the answers online. It's perfectly okay to write "I don't know", but please try your very best. </p>
@@ -654,6 +652,7 @@ function setupGame() {
     var crtTrials = crt.map((item, trial_number) => {
         return {
             type: jsPsychHtmlKeyboardResponse,
+            choices: "NO_KEYS",
             stimulus: `
                 <div class="content-box">
                 <p class="riddle-prompt">${item.riddle_text}</p>
@@ -705,7 +704,7 @@ function setupGame() {
         type: jsPsychPipe,
         action: "save",
         experiment_id: gs.study_metadata.experimentIdOSF,
-        filename: `${jsPsych.data.dataProperties.subjectID}_part3.json`,
+        filename: `${jsPsych.data.dataProperties.subjectID}_part2.json`,
         data_string: () => jsPsych.data.get().json()
     };
     main_experiment_list.push(save_till_part3);
@@ -728,7 +727,7 @@ function setupGame() {
     };
     main_experiment_list.push(preExitMessage);
 
-    const all_riddle_text = riddleSequence.map(r => r.riddle_text).concat(crt.map(r => r.riddle_text));
+    const all_riddle_text = crt.map(r => r.riddle_text);
     all_riddle_text.forEach((item, index) => all_riddle_text[index] = item.replace(/<br>/g, "  "));
 
     var exitSurvey = {
