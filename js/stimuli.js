@@ -56,7 +56,7 @@ var stimuli = [{
 
 var crt = [
     {
-        "riddle_label": "crt_fruit",
+        "riddle_label": "crt_planes",
         "riddle_text": "Two planes take off at the same moment. Plane A leaves New York and is flying to Paris at 550 miles per hour. Plane B leaves New York and is flying to Paris at 350 miles per hour. Which plane will be closer to Paris when they meet after take-off?",
         "riddle_answer": "They will be at the same distance from Paris when they meet."
     },
@@ -71,6 +71,11 @@ var crt = [
         "riddle_answer": "There are no stairs in a one-story house."
     },
     {
+        "riddle_label": "crt_matchstick",
+        "riddle_text": "If you have only one match and you walk into a dark room where there is an oil lamp, a pile of dry leaves, and a log — which thing would you light first?",
+        "riddle_answer": "The match"
+    },
+    {
         "riddle_label": "crt_coconut",
         "riddle_text": "A monkey, a squirrel, and a bird are racing to the top of a coconut tree. Who will get the banana first, the monkey, the squirrel, or the bird?",
         "riddle_answer": "None of them, because coconut trees don't grow bananas."
@@ -79,10 +84,5 @@ var crt = [
         "riddle_label": "crt_egg",
         "riddle_text": "Which sentence is correct: a) “the yolk of the egg are white” or b) “the yolk of the egg is white”?",
         "riddle_answer": "Neither, the yolk is yellow"
-    },
-    {
-        "riddle_label": "crt_matchstick",
-        "riddle_text": "If you have only one match and you walk into a dark room where there is an oil lamp, a pile of dry leaves, and a log — which thing would you light first?",
-        "riddle_answer": "The match"
     }
 ]
